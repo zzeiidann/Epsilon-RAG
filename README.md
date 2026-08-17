@@ -2,7 +2,7 @@
 
 # Epsilon RAG
 
-**A private, local-first knowledge assistant for Discord and the command line.**
+**A 2024 local-first RAG experiment for Discord and the command line.**
 
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![LangChain](https://img.shields.io/badge/LangChain-RAG-1C3C3C?logo=langchain&logoColor=white)](https://www.langchain.com/)
@@ -13,7 +13,15 @@
 
 </div>
 
-Epsilon RAG turns PDF documents into a searchable local knowledge base. It retrieves the most relevant passages with Chroma, generates grounded answers through a local Ollama model, and exposes the result through a Discord bot or a lightweight CLI.
+Epsilon RAG is an older personal project originally built in **June 2024** as an early exploration of retrieval-augmented generation. It turns PDF documents into a searchable local knowledge base, retrieves relevant passages with Chroma, and generates answers through a local Ollama model for Discord or the command line.
+
+The repository has since been reorganized and documented for archival and portfolio purposes. The core concept and demo remain representative of the original 2024 prototype rather than a newly launched production system.
+
+## Project background
+
+This project began as a practical experiment to learn how document retrieval, vector embeddings, local language models, and Discord bots could work together. The prototype indexed a personal profile document and allowed questions to be asked directly inside a Discord channel using the `!ask` command.
+
+The screenshot below was captured during the original prototype testing on **25 June 2024**.
 
 ## Demo
 
