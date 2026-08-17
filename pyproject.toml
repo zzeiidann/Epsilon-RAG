@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "epsilon-rag"
+version = "1.0.0"
+description = "A local-first Discord RAG assistant for answering questions from PDF documents."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+  "chromadb>=0.5,<1.0",
+  "discord.py>=2.4,<3.0",
+  "langchain-chroma>=0.1,<1.0",
+  "langchain-community>=0.2,<1.0",
+  "langchain-huggingface>=0.0.3,<1.0",
+  "langchain-text-splitters>=0.2,<1.0",
+  "pypdf>=4.0,<6.0",
+  "python-dotenv>=1.0,<2.0",
+  "sentence-transformers>=3.0,<4.0",
+]
+
+[project.scripts]
+epsilon-index = "epsilon_rag.store:main"
+epsilon-query = "epsilon_rag.cli:main"
+epsilon-bot = "epsilon_rag.bot:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+

@@ -1,0 +1,21 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Local knowledge base and generated vector store
+data/*
+!data/.gitkeep
+chroma/
+
+# Model and training artifacts
+logs/
+results/
+*.tfevents.*
+
+# Notebook checkpoints and tooling caches
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+
