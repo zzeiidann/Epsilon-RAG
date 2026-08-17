@@ -18,7 +18,7 @@ Epsilon RAG turns PDF documents into a searchable local knowledge base. It retri
 ## Demo
 
 <p align="center">
-  <img src="docs/assets/epsilon-discord-demo-cropped.png" alt="Epsilon RAG answering document-based questions in Discord" width="100%">
+  <img src="docs/assets/epsilon-discord-demo-v2.png" alt="Epsilon RAG answering document-based questions in Discord" width="100%">
 </p>
 
 The screenshot shows the original Epsilon prototype answering questions from an indexed personal profile document directly inside Discord. Users invoke the assistant with `!ask`, while the bot retrieves relevant context and generates a natural-language response.
