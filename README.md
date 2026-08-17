@@ -146,7 +146,7 @@ In a channel where the bot is present:
 
 | Variable | Default | Purpose |
 |---|---|---|
-| `DISCORD_TOKEN` | — | Discord bot authentication token |
+| `DISCORD_TOKEN` | Not set | Discord bot authentication token |
 | `OLLAMA_MODEL` | `mistral` | Ollama model used for generation |
 | `EMBEDDING_MODEL` | `sentence-transformers/all-MiniLM-L6-v2` | Hugging Face embedding model |
 | `RAG_TOP_K` | `7` | Number of document chunks retrieved |
