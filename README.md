@@ -15,6 +15,23 @@
 
 Epsilon RAG turns PDF documents into a searchable local knowledge base. It retrieves the most relevant passages with Chroma, generates grounded answers through a local Ollama model, and exposes the result through a Discord bot or a lightweight CLI.
 
+## Demo
+
+<p align="center">
+  <img src="docs/assets/epsilon-discord-demo.png" alt="Epsilon RAG answering document-based questions in Discord" width="100%">
+</p>
+
+The screenshot shows the original Epsilon prototype answering questions from an indexed personal profile document directly inside Discord. Users invoke the assistant with `!ask`, while the bot retrieves relevant context and generates a natural-language response.
+
+### Example interaction
+
+```text
+User: !ask what are Mohammad Raffy's interests?
+
+Epsilon: Mohammad Raffy has a great interest in Data Science and is also
+very interested in Artificial Intelligence.
+```
+
 ## Highlights
 
 - Local-first generation with Ollama; document context stays on your machine.
@@ -22,6 +39,14 @@ Epsilon RAG turns PDF documents into a searchable local knowledge base. It retri
 - Semantic retrieval powered by Hugging Face embeddings and Chroma.
 - Discord `!ask` command plus a standalone query CLI.
 - Environment-based secrets and centralized configuration.
+
+## How it works
+
+1. PDF files from `data/` are loaded and split into overlapping text chunks.
+2. Each chunk is converted into a semantic embedding with Sentence Transformers.
+3. Chroma stores the embeddings and retrieves the chunks closest to a question.
+4. The retrieved text and question are passed to Mistral through Ollama.
+5. The answer and its document sources are returned through Discord or the CLI.
 
 ## Architecture
 
@@ -117,6 +142,39 @@ In a channel where the bot is present:
 | `OLLAMA_MODEL` | `mistral` | Ollama model used for generation |
 | `EMBEDDING_MODEL` | `sentence-transformers/all-MiniLM-L6-v2` | Hugging Face embedding model |
 | `RAG_TOP_K` | `7` | Number of document chunks retrieved |
+
+## Use cases
+
+- Personal knowledge assistants built from notes, profiles, or reference documents
+- Internal question-answering bots for teams and communities
+- Document exploration without sending source material to a hosted LLM API
+- Prototyping local retrieval-augmented generation workflows
+
+## Limitations
+
+- The indexing pipeline currently accepts PDF files only.
+- Answer quality depends on the source documents, selected model, and retrieved context.
+- Ollama must remain running while queries are processed.
+- Discord messages are truncated to the platform's 2,000-character limit.
+- This project does not yet include authentication or per-server knowledge bases.
+
+## Roadmap
+
+- [ ] Support additional document formats such as Markdown and DOCX
+- [ ] Add conversational memory and follow-up questions
+- [ ] Stream responses in Discord
+- [ ] Add automated tests and continuous integration
+- [ ] Support separate collections for multiple Discord servers
+
+## Troubleshooting
+
+**The bot starts but does not respond to `!ask`.** Ensure Message Content Intent is enabled both in the Discord Developer Portal and in the bot configuration.
+
+**Ollama cannot connect.** Run `ollama serve`, verify that it is available locally, and download the configured model with `ollama pull mistral`.
+
+**No relevant information is returned.** Add PDFs to `data/` and run `epsilon-index --reset` before querying again.
+
+**The first indexing run is slow.** The embedding model is downloaded on first use and cached for subsequent runs.
 
 ## Privacy
 
